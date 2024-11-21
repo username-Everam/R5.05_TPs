@@ -1,13 +1,14 @@
 package com.example.demo.controller;
 
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class BonjourController {
 
-    @GetMapping("/bonjour")
+    @RequestMapping("/bonjour")
     public String accueil() {
-        return "test";
+        return "<h1>Bonjour à tous le monde !</h1>";
     }
 }
 
