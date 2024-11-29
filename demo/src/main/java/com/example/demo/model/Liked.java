@@ -6,15 +6,19 @@ import lombok.Setter;
 
 @Entity
 @Setter
-@Table(name = "user")
-public class User {
+@Table(name = "liked")
+public class Liked {
     private Integer id;
     @Getter
-    private String name;
-    @Getter
-    private String password;
-    @Getter
-    private Role role;
+    private Boolean isLiked;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "article_id")
+    private Article article;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

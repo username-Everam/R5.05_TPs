@@ -6,20 +6,25 @@ import lombok.Setter;
 
 @Entity
 @Setter
-@Table(name = "user")
-public class User {
+@Table(name = "article")
+public class Article {
     private Integer id;
     @Getter
-    private String name;
+    private String contenu;
     @Getter
-    private String password;
-    @Getter
-    private Role role;
+    private String datePublication;
+    private User auteur;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     public Integer getId() {
         return id;
+    }
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "auteur")
+    public User getAuteur() {
+        return auteur;
     }
 }
